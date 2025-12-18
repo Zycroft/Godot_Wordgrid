@@ -1,0 +1,26 @@
+{
+  "points": {
+    "incorrect_letter": 0,
+    "wrong_position_letter": 5,
+    "correct_letter": 10,
+    "word_solved_bonus": 20,
+    "perfect_guess_bonus": 50,
+    "early_solve_multiplier": 1.0
+  },
+  "currency": {
+    "incorrect_letter": 0,
+    "wrong_position_letter": 1,
+    "correct_letter": 3,
+    "word_solved_bonus": 5,
+    "perfect_guess_bonus": 10,
+    "early_solve_multiplier": 1.0
+  },
+  "descriptions": {
+    "incorrect_letter": "Points/currency for grey letters (not in word)",
+    "wrong_position_letter": "Points/currency for yellow letters (in word, wrong spot)",
+    "correct_letter": "Points/currency for green letters (correct position)",
+    "word_solved_bonus": "Bonus for successfully guessing the word",
+    "perfect_guess_bonus": "Bonus for guessing on first attempt",
+    "early_solve_multiplier": "Multiplier applied when solving before half attempts used"
+  }
+}

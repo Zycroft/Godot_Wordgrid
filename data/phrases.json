@@ -1,0 +1,277 @@
+[
+  {
+    "id": 1,
+    "phrase": "To be, or not to be",
+    "source": "Hamlet (Shakespeare)"
+  },
+  {
+    "id": 2,
+    "phrase": "Et tu, Brute?",
+    "source": "Julius Caesar (Shakespeare)"
+  },
+  {
+    "id": 3,
+    "phrase": "All the world’s a stage",
+    "source": "As You Like It (Shakespeare)"
+  },
+  {
+    "id": 4,
+    "phrase": "Call me Ishmael.",
+    "source": "Moby-Dick (Herman Melville)"
+  },
+  {
+    "id": 5,
+    "phrase": "It was the best of times, it was the worst of times",
+    "source": "A Tale of Two Cities (Charles Dickens)"
+  },
+  {
+    "id": 6,
+    "phrase": "A rose by any other name would smell as sweet",
+    "source": "Romeo and Juliet (Shakespeare)"
+  },
+  {
+    "id": 7,
+    "phrase": "The pen is mightier than the sword",
+    "source": "Richelieu (Edward Bulwer-Lytton)"
+  },
+  {
+    "id": 8,
+    "phrase": "Abandon all hope, ye who enter here",
+    "source": "Inferno (Dante Alighieri)"
+  },
+  {
+    "id": 9,
+    "phrase": "Once upon a midnight dreary",
+    "source": "The Raven (Edgar Allan Poe)"
+  },
+  {
+    "id": 10,
+    "phrase": "In the beginning God created the heavens and the earth",
+    "source": "The Bible (Genesis)"
+  },
+  {
+    "id": 11,
+    "phrase": "All animals are equal, but some animals are more equal than others",
+    "source": "Animal Farm (George Orwell)"
+  },
+  {
+    "id": 12,
+    "phrase": "So it goes",
+    "source": "Slaughterhouse-Five (Kurt Vonnegut)"
+  },
+  {
+    "id": 13,
+    "phrase": "Big Brother is watching you",
+    "source": "1984 (George Orwell)"
+  },
+  {
+    "id": 14,
+    "phrase": "The lady doth protest too much, methinks",
+    "source": "Hamlet (Shakespeare)"
+  },
+  {
+    "id": 15,
+    "phrase": "Hell is other people",
+    "source": "No Exit (Jean-Paul Sartre)"
+  },
+  {
+    "id": 16,
+    "phrase": "Arms and the man I sing",
+    "source": "The Aeneid (Virgil)"
+  },
+  {
+    "id": 17,
+    "phrase": "Water, water, everywhere, nor any drop to drink",
+    "source": "The Rime of the Ancient Mariner (Samuel Taylor Coleridge)"
+  },
+  {
+    "id": 18,
+    "phrase": "All men are created equal",
+    "source": "Declaration of Independence (Thomas Jefferson)"
+  },
+  {
+    "id": 19,
+    "phrase": "Cry ‘Havoc!’ and let slip the dogs of war",
+    "source": "Julius Caesar (Shakespeare)"
+  },
+  {
+    "id": 20,
+    "phrase": "Knowledge is power",
+    "source": "Attributed to Francis Bacon"
+  },
+  {
+    "id": 21,
+    "phrase": "Beware the Ides of March",
+    "source": "Julius Caesar (Shakespeare)"
+  },
+  {
+    "id": 22,
+    "phrase": "The fault, dear Brutus, is not in our stars, but in ourselves",
+    "source": "Julius Caesar (Shakespeare)"
+  },
+  {
+    "id": 23,
+    "phrase": "Parting is such sweet sorrow",
+    "source": "Romeo and Juliet (Shakespeare)"
+  },
+  {
+    "id": 24,
+    "phrase": "The course of true love never did run smooth",
+    "source": "A Midsummer Night’s Dream (Shakespeare)"
+  },
+  {
+    "id": 25,
+    "phrase": "All that glitters is not gold",
+    "source": "The Merchant of Venice (Shakespeare)"
+  },
+  {
+    "id": 26,
+    "phrase": "The unexamined life is not worth living",
+    "source": "Apology (Plato)"
+  },
+  {
+    "id": 27,
+    "phrase": "I think, therefore I am",
+    "source": "Meditations (René Descartes)"
+  },
+  {
+    "id": 28,
+    "phrase": "The only thing we have to fear is fear itself",
+    "source": "Franklin D. Roosevelt’s Inaugural Address"
+  },
+  {
+    "id": 29,
+    "phrase": "Ask not what your country can do for you",
+    "source": "John F. Kennedy’s Inaugural Address"
+  },
+  {
+    "id": 30,
+    "phrase": "Four score and seven years ago",
+    "source": "Gettysburg Address (Abraham Lincoln)"
+  },
+  {
+    "id": 31,
+    "phrase": "Give me liberty, or give me death",
+    "source": "Patrick Henry Speech"
+  },
+  {
+    "id": 32,
+    "phrase": "Workers of the world unite",
+    "source": "The Communist Manifesto (Karl Marx)"
+  },
+  {
+    "id": 33,
+    "phrase": "The die is cast",
+    "source": "Attributed to Julius Caesar"
+  },
+  {
+    "id": 34,
+    "phrase": "Veni, vidi, vici",
+    "source": "Attributed to Julius Caesar"
+  },
+  {
+    "id": 35,
+    "phrase": "Carpe diem",
+    "source": "Odes (Horace)"
+  },
+  {
+    "id": 36,
+    "phrase": "The end justifies the means",
+    "source": "Attributed to Niccolò Machiavelli"
+  },
+  {
+    "id": 37,
+    "phrase": "History repeats itself",
+    "source": "Attributed to Karl Marx"
+  },
+  {
+    "id": 38,
+    "phrase": "Time is money",
+    "source": "Attributed to Benjamin Franklin"
+  },
+  {
+    "id": 39,
+    "phrase": "Power tends to corrupt, and absolute power corrupts absolutely",
+    "source": "Lord Acton"
+  },
+  {
+    "id": 40,
+    "phrase": "The truth will set you free",
+    "source": "The Bible (John 8:32)"
+  },
+  {
+    "id": 41,
+    "phrase": "All hope abandon, ye who enter here",
+    "source": "Inferno (Dante Alighieri)"
+  },
+  {
+    "id": 42,
+    "phrase": "The world is full of obvious things",
+    "source": "The Hound of the Baskervilles (Arthur Conan Doyle)"
+  },
+  {
+    "id": 43,
+    "phrase": "The moving finger writes; and, having writ, moves on",
+    "source": "Rubáiyát of Omar Khayyám"
+  },
+  {
+    "id": 44,
+    "phrase": "The child is father of the man",
+    "source": "My Heart Leaps Up (William Wordsworth)"
+  },
+  {
+    "id": 45,
+    "phrase": "The road less traveled",
+    "source": "The Road Not Taken (Robert Frost)"
+  },
+  {
+    "id": 46,
+    "phrase": "Do not go gentle into that good night",
+    "source": "Do Not Go Gentle into That Good Night (Dylan Thomas)"
+  },
+  {
+    "id": 47,
+    "phrase": "Rage, rage against the dying of the light",
+    "source": "Do Not Go Gentle into That Good Night (Dylan Thomas)"
+  },
+  {
+    "id": 48,
+    "phrase": "The center cannot hold",
+    "source": "The Second Coming (W. B. Yeats)"
+  },
+  {
+    "id": 49,
+    "phrase": "Things fall apart; the centre cannot hold",
+    "source": "The Second Coming (W. B. Yeats)"
+  },
+  {
+    "id": 50,
+    "phrase": "The horror! The horror!",
+    "source": "Heart of Darkness (Joseph Conrad)"
+  },
+  {
+    "id": 51,
+    "phrase": "So many things are possible just as long as you don’t know they’re impossible",
+    "source": "The Phantom Tollbooth (Norton Juster)"
+  },
+  {
+    "id": 52,
+    "phrase": "All we have to decide is what to do with the time that is given us",
+    "source": "The Fellowship of the Ring (J. R. R. Tolkien)"
+  },
+  {
+    "id": 53,
+    "phrase": "Not all those who wander are lost",
+    "source": "The Fellowship of the Ring (J. R. R. Tolkien)"
+  },
+  {
+    "id": 54,
+    "phrase": "Even the darkest night will end and the sun will rise",
+    "source": "Les Misérables (Victor Hugo)"
+  },
+  {
+    "id": 55,
+    "phrase": "Winter is coming",
+    "source": "A Game of Thrones (George R. R. Martin)"
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "rarities": {
+    "common": {
+      "price": 5,
+      "weight": 50,
+      "color": [0.7, 0.7, 0.7]
+    },
+    "uncommon": {
+      "price": 10,
+      "weight": 30,
+      "color": [0.3, 0.8, 0.3]
+    },
+    "rare": {
+      "price": 20,
+      "weight": 15,
+      "color": [0.3, 0.5, 0.9]
+    },
+    "epic": {
+      "price": 40,
+      "weight": 5,
+      "color": [0.7, 0.3, 0.9]
+    }
+  },
+  "descriptions": {
+    "price": "Cost in gems to purchase a book of this rarity",
+    "weight": "Relative chance of this rarity appearing (higher = more common)",
+    "color": "RGB color for the rarity label [r, g, b] values 0-1"
+  }
+}

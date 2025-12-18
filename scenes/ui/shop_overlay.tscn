@@ -1,0 +1,167 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/shop_overlay.gd" id="1_script"]
+
+[node name="ShopOverlay" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="DimBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShopPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(600, 450)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/ShopPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/ShopPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Book Shop"
+horizontal_alignment = 1
+
+[node name="GemsLabel" type="Label" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Your Gems: 0"
+horizontal_alignment = 1
+
+[node name="CompleteLabel" type="Label" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.8, 0.3, 1)
+theme_override_font_sizes/font_size = 28
+text = "Bookshelf Complete!"
+horizontal_alignment = 1
+
+[node name="BooksContainer" type="HBoxContainer" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+theme_override_constants/separation = 40
+
+[node name="BookOption1" type="VBoxContainer" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer/BooksContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="RarityLabel" type="Label" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer/BooksContainer/BookOption1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "COMMON"
+horizontal_alignment = 1
+
+[node name="BookPreview" type="ColorRect" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer/BooksContainer/BookOption1"]
+custom_minimum_size = Vector2(60, 90)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.6, 0.2, 0.2, 1)
+
+[node name="PriceLabel" type="Label" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer/BooksContainer/BookOption1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "5 gems"
+horizontal_alignment = 1
+
+[node name="BuyButton" type="Button" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer/BooksContainer/BookOption1"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+text = "Buy"
+
+[node name="BookOption2" type="VBoxContainer" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer/BooksContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="RarityLabel" type="Label" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer/BooksContainer/BookOption2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "UNCOMMON"
+horizontal_alignment = 1
+
+[node name="BookPreview" type="ColorRect" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer/BooksContainer/BookOption2"]
+custom_minimum_size = Vector2(60, 90)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.2, 0.4, 0.6, 1)
+
+[node name="PriceLabel" type="Label" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer/BooksContainer/BookOption2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "10 gems"
+horizontal_alignment = 1
+
+[node name="BuyButton" type="Button" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer/BooksContainer/BookOption2"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+text = "Buy"
+
+[node name="BookOption3" type="VBoxContainer" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer/BooksContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="RarityLabel" type="Label" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer/BooksContainer/BookOption3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "RARE"
+horizontal_alignment = 1
+
+[node name="BookPreview" type="ColorRect" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer/BooksContainer/BookOption3"]
+custom_minimum_size = Vector2(60, 90)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.2, 0.5, 0.3, 1)
+
+[node name="PriceLabel" type="Label" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer/BooksContainer/BookOption3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "20 gems"
+horizontal_alignment = 1
+
+[node name="BuyButton" type="Button" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer/BooksContainer/BookOption3"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+text = "Buy"
+
+[node name="CloseButton" type="Button" parent="CenterContainer/ShopPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Close"

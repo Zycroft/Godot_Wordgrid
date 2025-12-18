@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "godot": {
+      "command": "node",
+      "args": ["C:\Users\zycro\OneDrive\Documents\Apps\_godot\MCP\godot-mcp\build\index.js"],
+      "env": {
+        "DEBUG": "true"
+      }
+    }
+  }
+}
