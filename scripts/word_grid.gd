@@ -23,7 +23,7 @@ var max_rows: int = 6
 var word_length: int = 0
 var is_locked: bool = false
 var cell_size: int = DEFAULT_CELL_SIZE
-var space_positions: Array[int] = []  # Indices of space characters in the phrase
+var space_positions: Dictionary = {}  # Indices of space characters (key=index, value=true) for O(1) lookup
 
 # Word validation
 var valid_words: ValidWords = null
@@ -53,11 +53,11 @@ func set_target_word(word: String) -> void:
 	target_word = word.to_upper()
 	word_length = target_word.length()
 
-	# Find space positions
+	# Find space positions (using Dictionary for O(1) lookup)
 	space_positions.clear()
 	for i in range(word_length):
 		if target_word[i] == " ":
-			space_positions.append(i)
+			space_positions[i] = true
 
 	# Get try_rows from config - use phrase_try_rows for phrases
 	if space_positions.size() > 0:
@@ -74,6 +74,7 @@ func _calculate_cell_size() -> void:
 	# Calculate cell size based on word length to fit within max width
 	var total_spacing := (word_length - 1) * CELL_SPACING
 	var available_width := MAX_GRID_WIDTH - total_spacing
+	@warning_ignore("integer_division")
 	var calculated_size := available_width / word_length
 
 	# Clamp between min and default size
@@ -108,7 +109,7 @@ func _build_grid() -> void:
 			row_cells.append(cell)
 
 			# Mark space positions
-			if col_idx in space_positions:
+			if space_positions.has(col_idx):
 				cell.set_as_space()
 
 		cells.append(row_cells)
@@ -122,13 +123,13 @@ func _build_grid() -> void:
 
 func _skip_spaces_forward() -> void:
 	# Skip over any space positions when moving forward
-	while current_col < word_length and current_col in space_positions:
+	while current_col < word_length and space_positions.has(current_col):
 		current_col += 1
 
 
 func _skip_spaces_backward() -> void:
 	# Skip over any space positions when moving backward
-	while current_col > 0 and (current_col - 1) in space_positions:
+	while current_col > 0 and space_positions.has(current_col - 1):
 		current_col -= 1
 
 
@@ -152,7 +153,7 @@ func enter_letter(letter: String) -> void:
 		return
 
 	# Skip if current position is a space
-	if current_col in space_positions:
+	if space_positions.has(current_col):
 		_skip_spaces_forward()
 		if current_col >= word_length:
 			return
@@ -179,11 +180,11 @@ func backspace() -> void:
 	if current_col > 0:
 		current_col -= 1
 		# Skip over any spaces when going backward
-		while current_col > 0 and current_col in space_positions:
+		while current_col > 0 and space_positions.has(current_col):
 			current_col -= 1
 
 	# Don't clear if it's a space
-	if current_col in space_positions:
+	if space_positions.has(current_col):
 		_update_selection()
 		return
 
@@ -248,7 +249,7 @@ func _is_row_filled() -> bool:
 		return false
 
 	for i in range(word_length):
-		if i in space_positions:
+		if space_positions.has(i):
 			continue  # Skip space positions
 		var cell: LetterCell = cells[current_row][i]
 		if cell.letter.is_empty() or cell.letter == " ":
@@ -261,7 +262,7 @@ func _clear_current_row() -> void:
 		return
 
 	for i in range(word_length):
-		if i in space_positions:
+		if space_positions.has(i):
 			continue  # Don't clear space cells
 		cells[current_row][i].clear()
 
@@ -277,7 +278,7 @@ func _evaluate_guess(guess: String) -> bool:
 	if guess_upper == target_upper:
 		# All correct - mark non-space cells as correct
 		for i in range(word_length):
-			if i in space_positions:
+			if space_positions.has(i):
 				continue  # Keep space state
 			cells[current_row][i].set_state(LetterCell.State.CORRECT)
 		return true
@@ -293,7 +294,7 @@ func _evaluate_guess(guess: String) -> bool:
 	cell_states.resize(word_length)
 
 	for i in range(word_length):
-		if i in space_positions:
+		if space_positions.has(i):
 			cell_states[i] = LetterCell.State.EMPTY  # Placeholder, won't be applied
 		elif guess_upper[i] == target_upper[i]:
 			cell_states[i] = LetterCell.State.CORRECT
@@ -303,7 +304,7 @@ func _evaluate_guess(guess: String) -> bool:
 
 	# Second pass: mark wrong positions (yellow), skip spaces
 	for i in range(word_length):
-		if i in space_positions:
+		if space_positions.has(i):
 			continue
 		if cell_states[i] == LetterCell.State.INCORRECT:
 			var letter := guess_upper[i]
@@ -313,7 +314,7 @@ func _evaluate_guess(guess: String) -> bool:
 
 	# Apply states to cells (skip spaces to preserve their state)
 	for i in range(word_length):
-		if i not in space_positions:
+		if not space_positions.has(i):
 			cells[current_row][i].set_state(cell_states[i])
 
 	return false
@@ -337,7 +338,7 @@ func reveal_answer() -> void:
 	# Show the correct answer in the current row
 	if current_row < cells.size():
 		for i in range(word_length):
-			if i in space_positions:
+			if space_positions.has(i):
 				continue  # Skip spaces
 			cells[current_row][i].set_display_letter(target_word[i])
 			cells[current_row][i].set_state(LetterCell.State.CORRECT)
@@ -375,7 +376,7 @@ func get_all_letter_states() -> Array:
 		var row_states: Array[int] = []
 		for col_idx in range(cells[row_idx].size()):
 			# Skip space positions - they don't count for scoring
-			if col_idx in space_positions:
+			if space_positions.has(col_idx):
 				continue
 
 			var cell: LetterCell = cells[row_idx][col_idx]

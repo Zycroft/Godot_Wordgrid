@@ -15,9 +15,17 @@ signal shop_pressed
 func _ready() -> void:
 	continue_button.pressed.connect(_on_continue_pressed)
 	shop_button.pressed.connect(_on_shop_pressed)
+	set_process_unhandled_input(false)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		get_viewport().set_input_as_handled()
+		_on_continue_pressed()
 
 
 func show_score(words_found: int, points: int, gems: int) -> void:
+	set_process_unhandled_input(true)
 	if words_found > 0:
 		words_found_label.text = "Word Solved!"
 		words_found_label.add_theme_color_override("font_color", Color(0.2, 0.8, 0.3))
@@ -42,8 +50,10 @@ func set_title(text: String) -> void:
 
 
 func _on_continue_pressed() -> void:
+	set_process_unhandled_input(false)
 	continue_pressed.emit()
 
 
 func _on_shop_pressed() -> void:
+	set_process_unhandled_input(false)
 	shop_pressed.emit()

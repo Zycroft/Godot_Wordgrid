@@ -43,6 +43,12 @@ const COLLECTED_ALPHA: float = 1.0
 var collected_books: Array[bool] = []
 var book_data_list: Array[Dictionary] = []  # Stores book data for each slot
 
+# Drag and drop state
+var dragging: bool = false
+var drag_index: int = -1
+var drag_offset: Vector2 = Vector2.ZERO
+var drag_preview: ColorRect = null
+
 
 func _ready() -> void:
 	collected_books.resize(TOTAL_BOOKS)
@@ -51,7 +57,7 @@ func _ready() -> void:
 	for i in range(TOTAL_BOOKS):
 		book_data_list[i] = {}
 	_update_display()
-	_setup_book_tooltips()
+	_setup_book_interactions()
 
 
 func collect_book(index: int) -> bool:
@@ -61,6 +67,7 @@ func collect_book(index: int) -> bool:
 		return false
 
 	collected_books[index] = true
+	@warning_ignore("integer_division")
 	var shelf_index := index / BOOKS_PER_SHELF
 	var book_index := index % BOOKS_PER_SHELF
 	book_collected.emit(shelf_index, book_index)
@@ -83,6 +90,8 @@ func collect_next_book_with_data(data: Dictionary, rarity: String) -> int:
 		if not collected_books[i]:
 			var full_data := data.duplicate()
 			full_data["rarity"] = rarity
+			# Store the color index so it follows the book when swapped
+			full_data["color_index"] = i % BOOK_COLORS.size()
 			book_data_list[i] = full_data
 			collect_book(i)
 			return i
@@ -137,25 +146,142 @@ func _update_display() -> void:
 			var book := books[book_idx] as ColorRect
 			var global_idx := shelf_idx * BOOKS_PER_SHELF + book_idx
 
-			# Show collected books, make uncollected ones transparent (but keep space)
-			var base_color := BOOK_COLORS[global_idx % BOOK_COLORS.size()]
 			if collected_books[global_idx]:
+				# Use stored color index from book data, or fall back to slot position
+				var data := book_data_list[global_idx]
+				var color_idx: int = data.get("color_index", global_idx) % BOOK_COLORS.size()
+				var base_color := BOOK_COLORS[color_idx]
 				book.color = Color(base_color.r, base_color.g, base_color.b, COLLECTED_ALPHA)
 				# Update tooltip with book name
-				var data := book_data_list[global_idx]
 				if data.has("name"):
 					book.tooltip_text = data["name"]
 			else:
+				# Uncollected: use slot position color but transparent
+				var base_color := BOOK_COLORS[global_idx % BOOK_COLORS.size()]
 				book.color = Color(base_color.r, base_color.g, base_color.b, 0.0)
 				book.tooltip_text = ""
 
 
-func _setup_book_tooltips() -> void:
-	# Connect mouse signals for each book to show tooltips
+func _setup_book_interactions() -> void:
+	# Connect mouse signals for each book for tooltips and drag-drop
 	for shelf_idx in range(NUM_SHELVES):
 		var container := books_containers[shelf_idx]
 		var books := container.get_children()
 
 		for book_idx in range(books.size()):
 			var book := books[book_idx] as ColorRect
-			book.mouse_filter = Control.MOUSE_FILTER_PASS
+			var global_idx := shelf_idx * BOOKS_PER_SHELF + book_idx
+			book.mouse_filter = Control.MOUSE_FILTER_STOP
+			book.gui_input.connect(_on_book_gui_input.bind(global_idx))
+
+
+func _on_book_gui_input(event: InputEvent, book_index: int) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				# Start dragging if book is collected
+				if collected_books[book_index]:
+					_start_drag(book_index, event.global_position)
+			else:
+				# End dragging
+				if dragging:
+					_end_drag(event.global_position)
+
+
+func _input(event: InputEvent) -> void:
+	if dragging:
+		if event is InputEventMouseMotion:
+			_update_drag(event.global_position)
+		elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
+			_end_drag(event.global_position)
+
+
+func _start_drag(index: int, mouse_pos: Vector2) -> void:
+	dragging = true
+	drag_index = index
+
+	# Get the book's visual
+	var book := _get_book_rect(index)
+	if not book:
+		return
+
+	drag_offset = book.global_position - mouse_pos
+
+	# Create a preview that follows the mouse
+	drag_preview = ColorRect.new()
+	drag_preview.custom_minimum_size = book.custom_minimum_size
+	drag_preview.size = book.size
+	drag_preview.color = book.color
+	drag_preview.color.a = 0.7
+	drag_preview.z_index = 100
+	drag_preview.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(drag_preview)
+	drag_preview.global_position = mouse_pos + drag_offset
+
+	# Make original book semi-transparent
+	book.color.a = 0.3
+
+
+func _update_drag(mouse_pos: Vector2) -> void:
+	if drag_preview:
+		drag_preview.global_position = mouse_pos + drag_offset
+
+
+func _end_drag(mouse_pos: Vector2) -> void:
+	if not dragging:
+		return
+
+	# Find which slot we're dropping onto
+	var target_index := _get_slot_at_position(mouse_pos)
+
+	if target_index >= 0 and target_index != drag_index:
+		# Swap the books
+		_swap_books(drag_index, target_index)
+
+	# Clean up
+	if drag_preview:
+		drag_preview.queue_free()
+		drag_preview = null
+
+	dragging = false
+	drag_index = -1
+	_update_display()
+
+
+func _get_book_rect(index: int) -> ColorRect:
+	@warning_ignore("integer_division")
+	var shelf_idx := index / BOOKS_PER_SHELF
+	var book_idx := index % BOOKS_PER_SHELF
+
+	if shelf_idx < books_containers.size():
+		var books := books_containers[shelf_idx].get_children()
+		if book_idx < books.size():
+			return books[book_idx] as ColorRect
+	return null
+
+
+func _get_slot_at_position(global_pos: Vector2) -> int:
+	for shelf_idx in range(NUM_SHELVES):
+		var container := books_containers[shelf_idx]
+		var books := container.get_children()
+
+		for book_idx in range(books.size()):
+			var book := books[book_idx] as ColorRect
+			# Use the actual rendered size, falling back to minimum size
+			var book_size := book.size if book.size.x > 0 else book.custom_minimum_size
+			var rect := Rect2(book.global_position, book_size)
+			if rect.has_point(global_pos):
+				return shelf_idx * BOOKS_PER_SHELF + book_idx
+	return -1
+
+
+func _swap_books(from_index: int, to_index: int) -> void:
+	# Swap collected state
+	var temp_collected := collected_books[from_index]
+	collected_books[from_index] = collected_books[to_index]
+	collected_books[to_index] = temp_collected
+
+	# Swap book data
+	var temp_data := book_data_list[from_index]
+	book_data_list[from_index] = book_data_list[to_index]
+	book_data_list[to_index] = temp_data
