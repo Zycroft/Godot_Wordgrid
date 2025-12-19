@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccrosswordgame"]
+[gd_scene load_steps=2 format=3 uid="uid://dcrosswordgamescn"]
 
 [ext_resource type="Script" path="res://scripts/sub_games/crossword.gd" id="1_crossword"]
 
@@ -48,8 +48,8 @@ horizontal_alignment = 1
 [node name="StatusLabel" type="Label" parent="HSplitContainer/LeftPanel"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
 theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
 text = "Fill in the words!"
 horizontal_alignment = 1
 
@@ -76,8 +76,8 @@ columns = 15
 
 [node name="InstructionLabel" type="Label" parent="HSplitContainer/LeftPanel"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
 theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
 text = "Type letters to fill in the crossword"
 horizontal_alignment = 1
 

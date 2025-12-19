@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://csubgameselector"]
+[gd_scene load_steps=2 format=3 uid="uid://dsubgameselector1"]
 
 [ext_resource type="Script" path="res://scripts/sub_games/sub_game_selector.gd" id="1_selector"]
 
