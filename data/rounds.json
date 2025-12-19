@@ -1,0 +1,90 @@
+{
+  "stages_per_round": 4,
+  "phrase_stage": 4,
+  "phrase_try_rows": 8,
+  "rounds": {
+    "1": {
+      "word_lengths": [2, 3],
+      "try_rows_by_length": {
+        "2": 3,
+        "3": 4
+      },
+      "max_phrase_length": 15
+    },
+    "2": {
+      "word_lengths": [3, 4],
+      "try_rows_by_length": {
+        "3": 4,
+        "4": 5
+      },
+      "max_phrase_length": 20
+    },
+    "3": {
+      "word_lengths": [4, 5],
+      "try_rows_by_length": {
+        "4": 5,
+        "5": 6
+      },
+      "max_phrase_length": 25
+    },
+    "4": {
+      "word_lengths": [5, 6],
+      "try_rows_by_length": {
+        "5": 6,
+        "6": 6
+      },
+      "max_phrase_length": 30
+    },
+    "5": {
+      "word_lengths": [6, 7],
+      "try_rows_by_length": {
+        "6": 6,
+        "7": 8
+      },
+      "max_phrase_length": 35
+    },
+    "6": {
+      "word_lengths": [7, 8],
+      "try_rows_by_length": {
+        "7": 8,
+        "8": 8
+      },
+      "max_phrase_length": 40
+    },
+    "7": {
+      "word_lengths": [8, 9],
+      "try_rows_by_length": {
+        "8": 8,
+        "9": 10
+      },
+      "max_phrase_length": 45
+    },
+    "8": {
+      "word_lengths": [9, 10],
+      "try_rows_by_length": {
+        "9": 10,
+        "10": 10
+      },
+      "max_phrase_length": 50
+    },
+    "9": {
+      "word_lengths": [10],
+      "try_rows_by_length": {
+        "10": 10
+      },
+      "max_phrase_length": 55
+    },
+    "10": {
+      "word_lengths": [10],
+      "try_rows_by_length": {
+        "10": 10
+      },
+      "max_phrase_length": 60
+    }
+  },
+  "defaults": {
+    "word_lengths": [10],
+    "try_rows": 6,
+    "max_phrase_length": 60
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "books": {
+    "common": [
+      {
+        "id": "aesops_fables",
+        "name": "Aesop's Fables",
+        "description": "Simple tales with timeless morals. The tortoise always beats the hare.",
+        "gem_modifier": {
+          "type": "+",
+          "value": 1
+        },
+        "point_modifier": {
+          "type": "+",
+          "value": 5
+        }
+      },
+      {
+        "id": "grimms_fairy_tales",
+        "name": "Grimm's Fairy Tales",
+        "description": "Once upon a time, words held magic. They still do.",
+        "gem_modifier": {
+          "type": "+",
+          "value": 2
+        },
+        "point_modifier": {
+          "type": "+",
+          "value": 3
+        }
+      },
+      {
+        "id": "alice_in_wonderland",
+        "name": "Alice's Adventures in Wonderland",
+        "description": "Curiouser and curiouser! Words mean exactly what you choose them to mean.",
+        "gem_modifier": {
+          "type": "+",
+          "value": 1
+        },
+        "point_modifier": {
+          "type": "+",
+          "value": 8
+        }
+      },
+      {
+        "id": "treasure_island",
+        "name": "Treasure Island",
+        "description": "X marks the spot. Every word is a clue to buried riches.",
+        "gem_modifier": {
+          "type": "+",
+          "value": 3
+        },
+        "point_modifier": {
+          "type": "+",
+          "value": 2
+        }
+      }
+    ],
+    "uncommon": [
+      {
+        "id": "pride_and_prejudice",
+        "name": "Pride and Prejudice",
+        "description": "It is a truth universally acknowledged that good words bring good fortune.",
+        "gem_modifier": {
+          "type": "+Mult",
+          "value": 1.2
+        },
+        "point_modifier": {
+          "type": "+",
+          "value": 10
+        }
+      },
+      {
+        "id": "sherlock_holmes",
+        "name": "The Adventures of Sherlock Holmes",
+        "description": "Elementary, my dear player. Deduce the word from the clues.",
+        "gem_modifier": {
+          "type": "+",
+          "value": 5
+        },
+        "point_modifier": {
+          "type": "+Mult",
+          "value": 1.15
+        }
+      },
+      {
+        "id": "frankenstein",
+        "name": "Frankenstein",
+        "description": "Assembled from parts, yet alive with meaning. Words create monsters and marvels.",
+        "gem_modifier": {
+          "type": "+Mult",
+          "value": 1.1
+        },
+        "point_modifier": {
+          "type": "+Mult",
+          "value": 1.1
+        }
+      },
+      {
+        "id": "the_odyssey",
+        "name": "The Odyssey",
+        "description": "A long journey home. Each word brings you closer to victory.",
+        "gem_modifier": {
+          "type": "+",
+          "value": 4
+        },
+        "point_modifier": {
+          "type": "+Mult",
+          "value": 1.25
+        }
+      }
+    ],
+    "rare": [
+      {
+        "id": "les_miserables",
+        "name": "Les Misérables",
+        "description": "To love another person is to see the face of God. To know words is to find treasure.",
+        "gem_modifier": {
+          "type": "+Mult",
+          "value": 1.5
+        },
+        "point_modifier": {
+          "type": "+Mult",
+          "value": 1.3
+        }
+      },
+      {
+        "id": "don_quixote",
+        "name": "Don Quixote",
+        "description": "Dream the impossible dream. Tilt at windmills of letters.",
+        "gem_modifier": {
+          "type": "xMult",
+          "value": 1.5
+        },
+        "point_modifier": {
+          "type": "+",
+          "value": 25
+        }
+      },
+      {
+        "id": "count_of_monte_cristo",
+        "name": "The Count of Monte Cristo",
+        "description": "Wait and hope. Patience and vocabulary will be rewarded.",
+        "gem_modifier": {
+          "type": "+",
+          "value": 10
+        },
+        "point_modifier": {
+          "type": "xMult",
+          "value": 1.4
+        }
+      },
+      {
+        "id": "war_and_peace",
+        "name": "War and Peace",
+        "description": "An epic of unmatched scope. Every letter is a soldier in your army.",
+        "gem_modifier": {
+          "type": "+Mult",
+          "value": 1.3
+        },
+        "point_modifier": {
+          "type": "xMult",
+          "value": 1.3
+        }
+      }
+    ],
+    "epic": [
+      {
+        "id": "divine_comedy",
+        "name": "The Divine Comedy",
+        "description": "Through the inferno of wrong guesses to the paradise of victory. Abandon all doubt.",
+        "gem_modifier": {
+          "type": "xMult",
+          "value": 2.0
+        },
+        "point_modifier": {
+          "type": "xMult",
+          "value": 1.75
+        }
+      },
+      {
+        "id": "tale_of_two_cities",
+        "name": "A Tale of Two Cities",
+        "description": "It was the best of words, it was the worst of words. Choose wisely.",
+        "gem_modifier": {
+          "type": "xMult",
+          "value": 1.75
+        },
+        "point_modifier": {
+          "type": "xMult",
+          "value": 2.0
+        }
+      },
+      {
+        "id": "moby_dick",
+        "name": "Moby Dick",
+        "description": "Call me Ishmael. Hunt the white whale of the perfect word.",
+        "gem_modifier": {
+          "type": "xMult",
+          "value": 2.5
+        },
+        "point_modifier": {
+          "type": "+Mult",
+          "value": 2.0
+        }
+      },
+      {
+        "id": "complete_shakespeare",
+        "name": "The Complete Works of Shakespeare",
+        "description": "All the world's a stage, and all the words merely players. The ultimate collection.",
+        "gem_modifier": {
+          "type": "+Mult",
+          "value": 2.0
+        },
+        "point_modifier": {
+          "type": "xMult",
+          "value": 2.5
+        }
+      }
+    ]
+  }
+}

@@ -3,7 +3,7 @@ extends PanelContainer
 
 signal cell_clicked(cell: LetterCell)
 
-enum State { EMPTY, FILLED, CORRECT, WRONG_POSITION, INCORRECT }
+enum State { EMPTY, FILLED, CORRECT, WRONG_POSITION, INCORRECT, SPACE }
 
 const COLOR_EMPTY := Color(0.2, 0.2, 0.25, 0.9)
 const COLOR_FILLED := Color(0.3, 0.3, 0.35, 0.9)
@@ -11,6 +11,7 @@ const COLOR_CORRECT := Color(0.18, 0.55, 0.34, 0.95)  # Green
 const COLOR_WRONG_POSITION := Color(0.71, 0.62, 0.26, 0.95)  # Yellow
 const COLOR_INCORRECT := Color(0.35, 0.35, 0.38, 0.95)  # Grey
 const COLOR_SELECTED := Color(0.4, 0.4, 0.45, 0.95)
+const COLOR_SPACE := Color(0.85, 0.85, 0.82, 0.9)  # Off-white for spaces
 
 @onready var label: Label = %Label
 
@@ -58,6 +59,17 @@ func set_selected(selected: bool) -> void:
 	_update_appearance()
 
 
+func set_as_space() -> void:
+	letter = " "
+	label.text = ""
+	state = State.SPACE
+	_update_appearance()
+
+
+func is_space() -> bool:
+	return state == State.SPACE
+
+
 func _update_appearance() -> void:
 	if not style_box:
 		return
@@ -77,6 +89,8 @@ func _update_appearance() -> void:
 				color = COLOR_WRONG_POSITION
 			State.INCORRECT:
 				color = COLOR_INCORRECT
+			State.SPACE:
+				color = COLOR_SPACE
 
 	style_box.bg_color = color
 

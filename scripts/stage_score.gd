@@ -25,7 +25,7 @@ func show_score(words_found: int, points: int, gems: int) -> void:
 		words_found_label.text = "Word Failed"
 		words_found_label.add_theme_color_override("font_color", Color(0.8, 0.3, 0.3))
 
-	points_label.text = "Points: %d" % points
+	points_label.text = "Points: +%d" % points
 	points_label.visible = true
 
 	if gems > 0:

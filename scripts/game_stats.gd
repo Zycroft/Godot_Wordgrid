@@ -4,6 +4,7 @@ extends PanelContainer
 @onready var stage_label: Label = %StageLabel
 @onready var stage_indicators: HBoxContainer = %StageIndicators
 @onready var points_label: Label = %PointsLabel
+@onready var gems_label: Label = %GemsLabel
 @onready var target_label: Label = %TargetLabel
 @onready var progress_bar: ProgressBar = %ProgressBar
 
@@ -13,6 +14,7 @@ func _ready() -> void:
 	GameManager.stage_changed.connect(_on_stage_changed)
 	GameManager.points_changed.connect(_on_points_changed)
 	GameManager.round_points_changed.connect(_on_round_points_changed)
+	GameManager.currency_changed.connect(_on_currency_changed)
 
 	_create_stage_indicators()
 	_update_all()
@@ -22,7 +24,7 @@ func _create_stage_indicators() -> void:
 	for child in stage_indicators.get_children():
 		child.queue_free()
 
-	for i in range(GameManager.STAGES_PER_ROUND):
+	for i in range(GameManager.stages_per_round):
 		var indicator := ColorRect.new()
 		indicator.custom_minimum_size = Vector2(40, 40)
 		indicator.color = Color(0.3, 0.3, 0.3, 0.8)
@@ -47,6 +49,7 @@ func _update_all() -> void:
 	_on_round_changed(GameManager.current_round)
 	_on_stage_changed(GameManager.current_stage)
 	_on_points_changed(GameManager.points)
+	_on_currency_changed(GameManager.currency)
 	_on_round_points_changed(GameManager.round_points_needed)
 
 
@@ -56,13 +59,17 @@ func _on_round_changed(round_number: int) -> void:
 
 
 func _on_stage_changed(stage_number: int) -> void:
-	stage_label.text = "Stage: %d / %d" % [stage_number, GameManager.STAGES_PER_ROUND]
+	stage_label.text = "Stage: %d / %d" % [stage_number, GameManager.stages_per_round]
 	_update_stage_indicators()
 
 
 func _on_points_changed(points: int) -> void:
 	points_label.text = "Points: %d" % points
 	progress_bar.value = GameManager.get_progress_percentage()
+
+
+func _on_currency_changed(currency: int) -> void:
+	gems_label.text = "Gems: %d" % currency
 
 
 func _on_round_points_changed(round_points: int) -> void:
