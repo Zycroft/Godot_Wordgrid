@@ -1,0 +1,78 @@
+{
+  "keyboard": {
+    "shift_glow_enabled": true,
+    "shift_glow_threshold": 5,
+    "shift_glow_color": "#4488FF"
+  },
+  "sub_games": {
+    "default": {
+      "cost": 5,
+      "word_search": {
+        "grid_width": 10,
+        "grid_height": 10
+      },
+      "crossword": {
+        "num_questions": 5
+      }
+    },
+    "rounds": {
+      "1": {
+        "cost": 5,
+        "word_search": { "grid_width": 8, "grid_height": 8 },
+        "crossword": { "num_questions": 3 }
+      },
+      "2": {
+        "cost": 5,
+        "word_search": { "grid_width": 8, "grid_height": 8 },
+        "crossword": { "num_questions": 3 }
+      },
+      "3": {
+        "cost": 6,
+        "word_search": { "grid_width": 10, "grid_height": 10 },
+        "crossword": { "num_questions": 4 }
+      },
+      "4": {
+        "cost": 6,
+        "word_search": { "grid_width": 10, "grid_height": 10 },
+        "crossword": { "num_questions": 4 }
+      },
+      "5": {
+        "cost": 7,
+        "word_search": { "grid_width": 12, "grid_height": 12 },
+        "crossword": { "num_questions": 5 }
+      },
+      "6": {
+        "cost": 7,
+        "word_search": { "grid_width": 12, "grid_height": 12 },
+        "crossword": { "num_questions": 5 }
+      },
+      "7": {
+        "cost": 8,
+        "word_search": { "grid_width": 14, "grid_height": 14 },
+        "crossword": { "num_questions": 6 }
+      },
+      "8": {
+        "cost": 8,
+        "word_search": { "grid_width": 14, "grid_height": 14 },
+        "crossword": { "num_questions": 6 }
+      },
+      "9": {
+        "cost": 10,
+        "word_search": { "grid_width": 15, "grid_height": 15 },
+        "crossword": { "num_questions": 7 }
+      },
+      "10": {
+        "cost": 10,
+        "word_search": { "grid_width": 15, "grid_height": 15 },
+        "crossword": { "num_questions": 7 }
+      }
+    }
+  },
+  "descriptions": {
+    "shift_glow_enabled": "Whether the shift key should glow when gems exceed threshold",
+    "shift_glow_threshold": "Minimum gem count to trigger shift key glow effect",
+    "shift_glow_color": "Color of the shift key glow (hex format)",
+    "sub_games_default": "Default sub-game settings used when round-specific config is not found",
+    "sub_games_rounds": "Per-round sub-game settings (cost, grid size, question count)"
+  }
+}

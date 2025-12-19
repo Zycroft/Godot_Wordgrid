@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://8pctaegc7iui"]
+[gd_scene load_steps=11 format=3 uid="uid://8pctaegc7iui"]
 
 [ext_resource type="Texture2D" uid="uid://uh61e1mxj0s5" path="res://assets/images/library1.jpg" id="1_background"]
 [ext_resource type="PackedScene" path="res://scenes/ui/game_stats.tscn" id="2_game_stats"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/word_grid.tscn" id="5_word_grid"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="6_main_script"]
 [ext_resource type="PackedScene" path="res://scenes/ui/shop_overlay.tscn" id="7_shop_overlay"]
+[ext_resource type="PackedScene" path="res://scenes/ui/sub_games/sub_game_selector.tscn" id="8_sub_game_selector"]
+[ext_resource type="PackedScene" path="res://scenes/ui/sub_games/word_search.tscn" id="9_word_search"]
+[ext_resource type="PackedScene" path="res://scenes/ui/sub_games/crossword.tscn" id="10_crossword"]
 
 [node name="Main" type="Control"]
 script = ExtResource("6_main_script")
@@ -159,5 +162,14 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="WordSearchGame" parent="." instance=ExtResource("9_word_search")]
+unique_name_in_owner = true
+
+[node name="CrosswordGame" parent="." instance=ExtResource("10_crossword")]
+unique_name_in_owner = true
+
 [node name="ShopOverlay" parent="." instance=ExtResource("7_shop_overlay")]
+unique_name_in_owner = true
+
+[node name="SubGameSelector" parent="." instance=ExtResource("8_sub_game_selector")]
 unique_name_in_owner = true

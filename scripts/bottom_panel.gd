@@ -5,6 +5,7 @@ signal backspace_pressed
 signal shift_toggled(is_shifted: bool)
 signal continue_pressed
 signal shop_pressed
+signal sub_game_requested
 
 @onready var keyboard: PanelContainer = %Keyboard
 @onready var stage_score: PanelContainer = %StageScore
@@ -19,6 +20,7 @@ func _ready() -> void:
 	keyboard.key_pressed.connect(func(key): key_pressed.emit(key))
 	keyboard.backspace_pressed.connect(func(): backspace_pressed.emit())
 	keyboard.shift_toggled.connect(func(shifted): shift_toggled.emit(shifted))
+	keyboard.sub_game_requested.connect(func(): sub_game_requested.emit())
 
 	# Connect stage score signals
 	stage_score.continue_pressed.connect(_on_continue_pressed)
@@ -80,3 +82,7 @@ func _on_continue_pressed() -> void:
 
 func _on_shop_pressed() -> void:
 	shop_pressed.emit()
+
+
+func is_shift_glowing() -> bool:
+	return keyboard.is_shift_glowing()

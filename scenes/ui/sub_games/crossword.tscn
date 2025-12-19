@@ -1,0 +1,122 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccrosswordgame"]
+
+[ext_resource type="Script" path="res://scripts/sub_games/crossword.gd" id="1_crossword"]
+
+[node name="Crossword" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_crossword")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.15, 1)
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftPanel" type="VBoxContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 10
+
+[node name="MarginTop" type="MarginContainer" parent="HSplitContainer/LeftPanel"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="TitleLabel" type="Label" parent="HSplitContainer/LeftPanel/MarginTop"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "CROSSWORD"
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="HSplitContainer/LeftPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 16
+text = "Fill in the words!"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="HSplitContainer/LeftPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="HSplitContainer/LeftPanel/CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/LeftPanel/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="GridContainer" type="GridContainer" parent="HSplitContainer/LeftPanel/CenterContainer/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 1
+theme_override_constants/v_separation = 1
+columns = 15
+
+[node name="InstructionLabel" type="Label" parent="HSplitContainer/LeftPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 14
+text = "Type letters to fill in the crossword"
+horizontal_alignment = 1
+
+[node name="MarginBottom" type="MarginContainer" parent="HSplitContainer/LeftPanel"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="RightPanel" type="PanelContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/RightPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/RightPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="CluesTitle" type="Label" parent="HSplitContainer/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "CLUES"
+
+[node name="HSeparator" type="HSeparator" parent="HSplitContainer/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CluesLabel" type="Label" parent="HSplitContainer/RightPanel/MarginContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "ACROSS:
+1. The target word
+
+DOWN:
+2. A crossing word"
